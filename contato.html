@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Contato</title>
+</head>
+<body>
+  <h2>Formulário de Contato</h2>
+  <form id="formContato">
+    <input type="text" id="nome" placeholder="Nome" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <textarea id="mensagem" placeholder="Mensagem" required></textarea><br>
+    <button type="submit">Enviar Mensagem</button>
+  </form>
+
+  <script src="js/jquery-3.6.4.min.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#formContato').on('submit', function (event) {
+        event.preventDefault();
+
+        var mensagem = {
+          nome: $('#nome').val(),
+          email: $('#email').val(),
+          mensagem: $('#mensagem').val()
+        };
+
+        inserirMensagem(mensagem);
+        alert('Mensagem enviada com sucesso!');
+        $('#formContato')[0].reset();
+      });
+    });
+  </script>
+</body>
+</html>
